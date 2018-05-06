@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import SearchCategories from '../SearchCategories/SearchCategories'
 import styles from './Home.css';
 import Logo from '../../img/foodfinder.png'
 
 class Home extends Component {
   state = {
     search: '',
-    zipcode: ''
+    zipcode: '',
+    categories: []
   }
 
   handleChange = e => {
@@ -14,6 +16,25 @@ class Home extends Component {
       [e.target.name]: e.target.value
     })
   }
+
+  removeCategory = category => {
+    let categoryCopy = [...this.state.categories];
+    let index = categoryCopy.indexOf(category.target.name);
+    categoryCopy.splice(index, 1);
+    this.setState({ categories: categoryCopy })
+  }
+
+  handleSearchCategories = e => {
+    if (e.key === 'Enter' || (e.charCode === 32)) {
+      this.setState({
+        categories: [...this.state.categories, this.state.search]
+      })
+      this.setState({
+        search: ''
+      })
+    }
+  }
+
   render() {
     return(
       <div className={styles.Container}>
@@ -21,37 +42,28 @@ class Home extends Component {
           <img className={styles.Logo} src={Logo}/>
           <div className={styles.Search}>
             <div className={styles.Find}>Find</div>
-            <form>
-              <FormGroup
-                controlId="formBasixText"
-                bsSize="lg"
-              >
-              <FormControl
-                className={styles.FormCategory}
-                type="text"
-                name="search"
-                value={this.state.search}
-                placeholder="Add categories"
-                onChange={this.handleChange}
-              />
-              </FormGroup>
-            </form>
+            <input
+              className={styles.FormCategory}
+              type="text"
+              name="search"
+              onKeyPress={this.handleSearchCategories}
+              value={this.state.search}
+              placeholder="Add categories"
+              onChange={this.handleChange}
+            />
             <div className={styles.Zipcode}>Zipcode</div>
-            <FormGroup
-                controlId="formBasixText"
-                bsSize="lg"
-              >
-              <FormControl
-                className={styles.FormCategory}
-                type="text"
-                name="zipcode"
-                value={this.state.zipcode}
-                placeholder="Enter your zipcode"
-                onChange={this.handleChange}
-              />
-              </FormGroup>
+            <input
+              className={styles.FormCategory}
+              type="text"
+              name="zipcode"
+              onKeyPress={this.handleSearchCategories}
+              value={this.state.zipcode}
+              placeholder="Enter a zipcode"
+              onChange={this.handleChange}
+            />
               <button className={styles.SearchButton}><span class="glyphicon glyphicon-search"/></button>
           </div>
+          <SearchCategories categories={this.state.categories} removeCategory={this.removeCategory.bind(this)}/>
         </div>
       </div>
     )
