@@ -1,7 +1,7 @@
 .Categories {
   display: flex;
   flex-direction: row;
-  padding-top: 20px;
+  /* margin-top: 15px; */
 }
 
 .Categories .Category {
