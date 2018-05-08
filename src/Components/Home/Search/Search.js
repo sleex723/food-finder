@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Search.css';
-import SearchCategories from '../../SearchCategories/SearchCategories';
+import SearchCategories from './SearchCategories/SearchCategories';
 
 class Search extends Component {
 	state = {

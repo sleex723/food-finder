@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
-import SearchCategories from '../SearchCategories/SearchCategories'
 import Search from './Search/Search';
 import styles from './Home.css';
 import Logo from '../../img/foodfinder.png'
