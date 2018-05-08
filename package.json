@@ -1,11 +1,19 @@
 {
   "name": "foodfinder",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sleex89/food-finder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sleex89/food-finder/issues"
+  },
+  "homepage": "https://github.com/sleex89/food-finder#readme"
 }
